@@ -11,7 +11,9 @@ $router = new \Core\Router();
 // Add routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('{controller}/{action}');
+$router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}');
+$router->add('admin/{controller}/{id:\d+}/{action}');
 
 echo '<pre>';
 echo htmlspecialchars(print_r($router->getRoutes(), true));

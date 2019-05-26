@@ -25,10 +25,11 @@ class Router
         // Convert route to regular expression
         $route = preg_replace('/\//','\\/', $route);
 
-
         // Convert variables e.g. {controller}
         $route = preg_replace('/\{([a-z]+)\}/','(?P<\1>[a-z-]+)', $route);
-//        print_r($route);exit;
+
+        // Convert variables with custom regular expressions e.g. {id:\d+}
+        $route = preg_replace('/\{([a-z]+):([^\}]+)\}/','(?P<\1>\2)', $route);
 
         // Add start and end delimiters, and case sensitive flag
         $route = '/^' . $route . '$/i';
